@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///geneProper5.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///GenesExtended.sqlite'
 app.config['SECRET_KEY'] = "random string"
 
 def Load_Data(file_name):
@@ -16,8 +16,7 @@ db = SQLAlchemy(app)
 class genes(db.Model):
     __tablename__ = 'genes'
     __table_args__ = {'sqlite_autoincrement': True}
-    id = db.Column('gene_id', db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
+    name = db.Column(db.String(100), primary_key=True)
     rsNum = db.Column(db.String(50))
     goodAllele = db.Column(db.String(200))
     riskAllele = db.Column(db.String(1000))
@@ -50,24 +49,3 @@ def new():
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
-
-
-file_name = "Genes.csv"
-data = Load_Data(file_name)
-
-
-try:
-    for i in data:
-        record = genes({
-            'name' : i[0],
-            'rsNum' : i[1],
-            'goodAllele' : i[2],
-            'riskAllele' : i[3]
-        })
-        db.session.add(record) #Add all the records
-
-    db.session.commit() #Attempt to commit all the records
-except:
-        db.session.rollback() #Rollback the changes on error
-finally:
-        db.session.close() #Close the connection
