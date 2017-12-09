@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Welcome, {{first_name}} {{last_name}}</h1>
+<h2>Your reports</h2>
+<table>
+    <tr>
+        <th scope='col'>Report Title</th>
+        <th scope='col'>Details</th>
+	<th scope='col'>Summary</th>
+    </tr>
+    {% for r in reports %}
+    <tr>
+        <td>{{r['title']}}</td>
+        <td>{{r['details']}}</td>
+	<td>{{r['summary']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
