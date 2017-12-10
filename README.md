@@ -27,6 +27,11 @@ The Sexy Project
 - JAVASCRIPT
 - 23andme API
 
+## thesexyproject So Far
+- Created database to hold genetic information created ( see wiki for more info )
+- Created website frontend (WIP - see wiki for more info)
+- Creatd data visualizations
+
 ## Future Goals
 - Expand database
 - Create expansive algorithm to help with determining a user’s reactivity to certain birth controls/drugs
