@@ -29,7 +29,7 @@ The Sexy Project
 
 ## thesexyproject So Far
 - Created database to hold genetic information created ( see wiki for more info )
-- Created website frontend (WIP - see wiki for more info)
+- Created website front-end (WIP - see wiki for more info)
 - Creatd data visualizations
 
 ## Future Goals
