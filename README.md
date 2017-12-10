@@ -1,5 +1,4 @@
 # thesexyproject
-The Sexy Project
 
 ## Contributors
 - Rishi Desai
