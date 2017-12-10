@@ -1,6 +1,15 @@
 # thesexyproject
 The Sexy Project
 
+## Contributors
+- Rishi Desai
+- Maciej Krzysiak
+- Pratik Chaudhari
+- Katie Ritchie
+- Edgar Cuevas
+- Alina Kuzhiyil
+- Ananya Cleetus (Project Manager)
+
 ## Goal
 
   The purpose of this project was to create an app that would display a user’s genetic information from 23andme in a way that would be more helpful than raw data. Specifically, we chose to focus on understanding genetic variations associated with the steroid hormones so users could make more informed decisions about birth control. Over the past semester, we compiled relevant genetic information, created an API that worked with 23andme, and found a way to present this information in a way that a lay-person would understand.
