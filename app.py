@@ -7,6 +7,7 @@ from requests_oauthlib import OAuth2Session
 from lib import me
 from settings import API_credentials
 
+#Flask App Setup
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sexy_project.db'
@@ -14,10 +15,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sexy_project.db'
 
 PORT=5000
 
-
+#Database Setup
 db.init_app(app)
 db.create_all(app=app)
 
+#23andMe API constants
 client_id = API_credentials['id']
 client_secret = API_credentials['secret']
 redirect_uri = 'http://localhost:5000/receive_code/'
@@ -25,8 +27,10 @@ API_TOKEN_URL = 'https://api.23andme.com/token/'
 API_AUTH_URL = 'https://api.23andme.com/authorize/'
 scopes = ['basic', 'names', 'email', 'genomes', 'report:all', 'phenotypes:read:all']
 
+#global variable of users token
 access_token = ''
 
+#Home page of the website that requires user to login with 23andMe
 @app.route('/')
 def index():
     ttam_oauth = OAuth2Session(client_id,
@@ -35,6 +39,7 @@ def index():
     auth_url, state = ttam_oauth.authorization_url(API_AUTH_URL)
     return render_template('index.html', auth_url=auth_url)
 
+#Callback endpoint that gets the token from 23andMe
 @app.route('/receive_code/')
 def receive_code():
     global access_token
@@ -48,6 +53,7 @@ def receive_code():
 
     return(redirect(url_for('home')))
 
+#Homepage that gets the raw data from 23andMe and sends it to the jinja2 template
 @app.route('/home')
 def home():
     account = me.get_account(access_token).json()

@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class Gene(db.Model):
+    #Stores genes and has references to all of the RSnumbers this Gene has
     __tablename__ = "genes"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -12,6 +13,7 @@ class Gene(db.Model):
         self.name = name
 
 class RSNum(db.Model):
+    #Stores RSnumbers and connecting them to the Gene they are a part of
     __tablename__ = "rsnums"
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String(50))
