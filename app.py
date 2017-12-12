@@ -5,6 +5,7 @@ from datetime import datetime
 import logging
 from requests_oauthlib import OAuth2Session
 from lib import me
+from settings import API_credentials
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,8 +18,8 @@ PORT=5000
 db.init_app(app)
 db.create_all(app=app)
 
-client_id = '3322ed45198e17266f747723de009d0b'
-client_secret = '155dbae5f39bb372cd0a72d3bf1f9f55'
+client_id = API_credentials['id']
+client_secret = API_credentials['secret']
 redirect_uri = 'http://localhost:5000/receive_code/'
 API_TOKEN_URL = 'https://api.23andme.com/token/'
 API_AUTH_URL = 'https://api.23andme.com/authorize/'
