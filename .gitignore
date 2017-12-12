@@ -20,4 +20,4 @@ htmlcov
 .coverage.*
 *,cover
 
-settings.template.py
+settings.py
