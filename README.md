@@ -27,7 +27,7 @@
 - 23andme API
 
 ## thesexyproject So Far
-- Created database to hold genetic information created ( see wiki for more info )
+- Created database to hold genetic information created ( [see wiki for more info](https://github.com/CS196Illinois/thesexyproject/wiki) )
 - Created website front-end (WIP - see wiki for more info)
 - Creatd data visualizations
 
