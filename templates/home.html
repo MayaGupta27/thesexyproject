@@ -1,19 +1,59 @@
 {% extends "base.html" %}
+{% block nav %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#home">TSP</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav nav-pills">
+	<li role="presentation" class="active"><a href="#home" data-toggle="tab">Home</a></li>
+	<li role="presentation"><a href="#gw" data-toggle="tab">Genetic Weight</a></li>
+	<li role="presentation"><a href="#afr" data-toggle="tab">Alcohol Flush Reaction</a></li>
+      </ul>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
 {% block body %}
-<h1>Welcome, {{first_name}} {{last_name}}</h1>
-<h2>Your reports</h2>
-<table>
-    <tr>
-        <th scope='col'>Report Title</th>
-        <th scope='col'>Details</th>
-	<th scope='col'>Summary</th>
-    </tr>
-    {% for r in reports %}
-    <tr>
-        <td>{{r['title']}}</td>
-        <td>{{r['details']}}</td>
-	<td>{{r['summary']}}</td>
-    </tr>
-    {% endfor %}
+<div class="tab-content clearfix">
+  <div class="tab-pane active" id="home">
+    <h1>Welcome, {{first_name}} {{last_name}}</h1>
+    <h2>Explore Your Genes!</h2>
+  </div>
+  <div class="tab-pane" id="gw">
+    <div class="panel panel-default">
+      <div class="panel-heading">Genetic Weight Report</div>
+      <div class="panel-body">
+	<p>Based on your genetics you are: {{reports[0]['summary']['outcome']['text']}}</p>
+      </div>
+      <table class="table">
+	<tr>
+	  <th>Age</th>
+	  <th>Sex</th> 
+	  <th>Ethnicity</th>
+	  <th>Predicted BMI</th>
+	</tr>
+	<tr>
+	  <td>{{reports[0]['details']['model_inputs']['age']}}</td>
+	  <td>{{reports[0]['details']['model_inputs']['sex']}}</td>
+	  <td>{{reports[0]['details']['model_inputs']['model_ethnicity']}}</td>
+	  <td>{{reports[0]['summary']['predicted_bmi']}}</td>
+	</tr>
+      </table>
+</div>
+  </div>
+  <div class="tab-pane" id="afr">
+    <h1>Alochol Flush Reaction Report</h1>
+    <p>{{reports[1]}}</p>
+  </div>
+</div>
 </table>
 {% endblock %}
